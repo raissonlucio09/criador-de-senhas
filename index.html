@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gerador inteligente de senhas com opções customizáveis, análise de força e cópia rápida." />
+  <title>Gerador Inteligente de Senhas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero__content">
+        <span class="eyebrow">Ferramenta de produtividade</span>
+        <h1 id="page-title">Gerador Inteligente de Senhas</h1>
+        <p>
+          Crie senhas seguras em segundos, ajuste cada detalhe e copie o resultado com um clique.
+          O projeto usa JavaScript puro e funciona direto no navegador.
+        </p>
+      </div>
+
+      <div class="hero__stats" aria-label="Destaques do projeto">
+        <article>
+          <strong>100%</strong>
+          <span>interativo</span>
+        </article>
+        <article>
+          <strong>0</strong>
+          <span>dependências JS</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="generator-card" aria-labelledby="generator-title">
+      <div class="card-header">
+        <div>
+          <span class="eyebrow">Configuração</span>
+          <h2 id="generator-title">Monte sua senha</h2>
+        </div>
+        <button class="button button--ghost" id="resetButton" type="button">Restaurar padrão</button>
+      </div>
+
+      <div class="result-panel" aria-live="polite">
+        <label for="passwordOutput">Senha gerada</label>
+        <div class="result-box">
+          <input id="passwordOutput" type="text" readonly value="" aria-label="Senha gerada" />
+          <button class="button button--primary" id="copyButton" type="button">Copiar</button>
+        </div>
+        <p class="copy-feedback" id="copyFeedback" role="status"></p>
+      </div>
+
+      <form class="controls" id="passwordForm">
+        <div class="range-control">
+          <div class="control-label-row">
+            <label for="lengthInput">Tamanho da senha</label>
+            <output id="lengthValue" for="lengthInput">16</output>
+          </div>
+          <input id="lengthInput" type="range" min="6" max="32" value="16" />
+        </div>
+
+        <fieldset class="options-grid">
+          <legend>Tipos de caracteres</legend>
+
+          <label class="option-card">
+            <input type="checkbox" id="uppercaseInput" checked />
+            <span>
+              <strong>Maiúsculas</strong>
+              <small>A-Z</small>
+            </span>
+          </label>
+
+          <label class="option-card">
+            <input type="checkbox" id="lowercaseInput" checked />
+            <span>
+              <strong>Minúsculas</strong>
+              <small>a-z</small>
+            </span>
+          </label>
+
+          <label class="option-card">
+            <input type="checkbox" id="numbersInput" checked />
+            <span>
+              <strong>Números</strong>
+              <small>0-9</small>
+            </span>
+          </label>
+
+          <label class="option-card">
+            <input type="checkbox" id="symbolsInput" checked />
+            <span>
+              <strong>Símbolos</strong>
+              <small>!@#$%</small>
+            </span>
+          </label>
+        </fieldset>
+
+        <label class="option-card option-card--wide">
+          <input type="checkbox" id="avoidAmbiguousInput" checked />
+          <span>
+            <strong>Evitar caracteres ambíguos</strong>
+            <small>Remove combinações como O, 0, I, l e 1 para melhorar a leitura.</small>
+          </span>
+        </label>
+
+        <div class="strength-panel">
+          <div class="control-label-row">
+            <span>Força estimada</span>
+            <strong id="strengthLabel">Forte</strong>
+          </div>
+          <div class="strength-bar" aria-hidden="true">
+            <span id="strengthBar"></span>
+          </div>
+          <p id="strengthHint">Use pelo menos 14 caracteres e combine diferentes tipos.</p>
+        </div>
+
+        <button class="button button--secondary" id="generateButton" type="submit">Gerar nova senha</button>
+      </form>
+    </section>
+  </main>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
